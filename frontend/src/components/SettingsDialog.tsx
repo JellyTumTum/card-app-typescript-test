@@ -25,7 +25,7 @@ const SettingsDialog: React.FC<SettingsDialogProps> = ({ closeDialog }) => {
 
                 <div className="flex items-center gap-4 ">
                     <p className="dark:text-slate-300">Dark Mode:</p>
-                    {/* This toggle switch was taken straight out of one of my previous projects that also had a darkMode Toggle. credit : https://github.com/JellyTumTum/SAM */}
+                    {/* This toggle switch was copied out of one of my previous projects that had a darkMode Toggle. credit : https://github.com/JellyTumTum/SAM */}
                     <div className="relative inline-block w-8 h-4 rounded-full cursor-pointer">
                         <input
                             id="darkModeSwitch"
