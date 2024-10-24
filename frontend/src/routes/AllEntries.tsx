@@ -18,18 +18,19 @@ export default function AllEntries() {
         <section className="grid grid-cols-2 md:grid-cols-4">
             {entries.map((entry: Entry, index: number) => {
                 return (
-                    <div id={entry.id} key={index} className="bg-gray-300 dark:bg-gray-800 shadow-md shadow-gray-500 dark:shadow-gray-900 m-3 px-4 py-2 rounded flex flex-col justify-between">
-                        <div className="flex flex-row justify-between items-center">
-                            <h1 className="font-bold text-sm md:text-lg dark:text-slate-100">{entry.title}</h1>
-                            <div className="flex justify-center">
-                                <button onClick={() => { deleteEntry(entry.id as string) }} className="m-1 md:m-2 p-1 font-semibold rounded-md bg-red-500 hover:bg-red-700">✖</button>
+                    <div id={entry.id} key={index} className="bg-gray-300 dark:bg-gray-800 shadow-md shadow-gray-500 dark:shadow-gray-900 m-3 px-2 pb-4 pt-2 rounded flex flex-col justify-between">
+                        <div className="flex flex-row items-center justify-center">
+                            <div className="flex flex-row justify-between items-center w-full">
                                 <button onClick={() => { navigate(`/edit/${entry.id}`, { replace: true }); }} className="m-1 md:m-2 p-1 font-semibold rounded-md bg-blue-500 hover:bg-blue-700">🖊</button>
+                                <h1 className="font-bold text-sm md:text-lg dark:text-slate-100">{entry.title}</h1>
+                                <button onClick={() => { deleteEntry(entry.id as string) }} className="m-1 md:m-2 p-1 font-semibold rounded-md bg-red-500 hover:bg-red-700">✖</button>
+
                             </div>
                         </div>
                         <p className="text-center text-lg font-light md:mt-2 md:mb-4 mt-1 mb-3 dark:text-slate-100">{entry.description}</p>
-                        <section className="flex items-center justify-between flex-col md:flex-row pt-2 md:pt-0">
-                            <time className="text-right text-sm md:text-lg dark:text-slate-100">Scheduled For: {new Date(entry.scheduled_for.toString()).toLocaleDateString()}</time>
-                            <time className="text-right text-sm md:text-lg dark:text-slate-100">Created: {new Date(entry.created_at.toString()).toLocaleDateString()}</time>
+                        <section className="flex items-center justify-between flex-col lg:flex-row pt-2 md:pt-0">
+                            <time className="text-center text-sm lg:text-md dark:text-slate-100">Scheduled For: {new Date(entry.scheduled_for.toString()).toLocaleDateString()}</time>
+                            <time className="text-center text-sm lg:text-md dark:text-slate-100">Created: {new Date(entry.created_at.toString()).toLocaleDateString()}</time>
                         </section>
 
                     </div>

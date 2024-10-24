@@ -9,9 +9,12 @@ import {
     Routes,
     Route
 } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import SettingsDialog from "./components/SettingsDialog";
 
 export default function App() {
+
+    const [showSettings, setShowSettings] = useState<boolean>(false);
 
     useEffect(() => {
         const isDarkMode = localStorage.getItem('darkMode');
@@ -22,11 +25,11 @@ export default function App() {
 
 
     return (
-        <div className="min-h-screen min-w-screen bg-slate-50 dark:bg-gray-700">
-            <section>
+        <div className={`min-h-screen min-w-screen bg-slate-50 dark:bg-gray-700`}>
+            <section className={`${showSettings ? 'blur-sm': ''}`}>
                 <Router>
                     <EntryProvider>
-                        <NavBar></NavBar>
+                        <NavBar showSettings={showSettings} setShowSettings={setShowSettings}></NavBar>
                         <Routes>
                             <Route path="/" element={<AllEntries />}>
                             </Route>
@@ -38,6 +41,12 @@ export default function App() {
                     </EntryProvider>
                 </Router>
             </section>
+            {showSettings && 
+            <>
+            <SettingsDialog closeDialog={() => setShowSettings(false)} ></SettingsDialog>
+            </>
+
+            }
         </div>
 
     );
