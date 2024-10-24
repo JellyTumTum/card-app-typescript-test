@@ -9,8 +9,18 @@ import {
     Routes,
     Route
 } from "react-router-dom";
+import { useEffect } from 'react';
 
 export default function App() {
+
+    useEffect(() => {
+        const isDarkMode = localStorage.getItem('darkMode');
+        if (isDarkMode?.includes('true')) {
+            document.documentElement.classList.add('dark');
+        }
+    }, []);
+
+
     return (
         <div className="min-h-screen min-w-screen bg-slate-50 dark:bg-gray-700">
             <section>
